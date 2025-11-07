@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Estoque de Smartphones</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Peso do Smartphone</th>
+                <th>RAM</th>
+                <th>Câmera Frontal</th>
+                <th>Câmera Traseira</th>
+                <th>Processador</th>
+                <th>Capacidade da Bateria</th>
+                <th>Tamanho da Tela</th>
+                <th>Preço em Dolares</th>
+                <th>Ano de Lançamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="smartphone : ${smartphones}">
+                <td class="cell" th:text="${smartphone.companyName}">companyName</td>
+                <td class="cell" th:text="${smartphone.modelName}">modelName</td>
+                <td class="cell" th:text="${smartphone.mobileWeight}">Milhas Por Litro</td>
+                <td class="cell" th:text="${smartphone.ram}">ram</td>
+                <td class="cell" th:text="${smartphone.frontCamera}">frontCamera</td>
+                <td class="cell" th:text="${smartphone.backCamera}">backCamera</td>
+                <td class="cell" th:text="${smartphone.processor}">processor</td>
+                <td class="cell" th:text="${smartphone.batteryCapacity}">batteryCapacity</td>
+                <td class="cell" th:text="${smartphone.screenSize}">screenSize</td>
+                <td class="cell" th:text="${smartphone.launchedPriceUSD}">screenSize</td>
+                <td class="cell" th:text="${smartphone.launchedYear}">launchedYear</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
