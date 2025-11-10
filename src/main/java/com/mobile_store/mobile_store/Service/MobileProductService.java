@@ -13,6 +13,7 @@ public class MobileProductService {
     List<MobileProduct> mobiles= new ArrayList<>();
     public MobileProductService(){
         mobiles.add(new MobileProduct(
+            mobiles.size()+1L,
             "Apple",
             "iPhone 16 128GB",
             "174g",
@@ -25,6 +26,7 @@ public class MobileProductService {
             "799,00",
             "2024"));
         mobiles.add(new MobileProduct(
+            mobiles.size()+1L,
             "Xiaomi",
             "Redmi Note 12",
             "188g",
@@ -37,6 +39,7 @@ public class MobileProductService {
             "169",
             "2023"));
         mobiles.add(new MobileProduct(
+            mobiles.size()+1L,
             "Samsung",
             "Galaxy A04s",
             "195g",
@@ -50,6 +53,7 @@ public class MobileProductService {
             "2022"
         ));
         mobiles.add(new MobileProduct(
+            mobiles.size()+1L,
             "Infinix",
             "Hot 20 5G",
             "204g",
@@ -67,7 +71,18 @@ public class MobileProductService {
         return mobiles;
     }
     public void addMobileProduct(MobileProduct newMobileProduct){
+        newMobileProduct.setIdMobileProduct(mobiles.size()+1L);
         mobiles.add(newMobileProduct);
     }    
+    public void deleteMobileProduct(Long id){
+        mobiles.removeIf((e)-> e.getIdMobileProduct().equals(id));
+    }
+    public void updateMobileProduct(MobileProduct updateMobileProduct){
+        MobileProduct findMobileProduct =(MobileProduct) mobiles.stream().filter((e)-> e.getIdMobileProduct().equals(updateMobileProduct.getIdMobileProduct())).findAny().orElse(null);
+        mobiles.add(mobiles.indexOf(findMobileProduct),updateMobileProduct);
+    }
+    public MobileProduct findById(Long id){
+        return (MobileProduct) mobiles.stream().filter((e)->e.getIdMobileProduct().equals(id)).findAny().orElse(null) ;
+    }
 }
 

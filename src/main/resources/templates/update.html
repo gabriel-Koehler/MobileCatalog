@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Update Smartphone</title>
+</head>
+<body>
+    <h1>Editar Smartphone</h1>
+    <form th:action="@{|/update/${findMobileProduct.idMobileProduct}|}" th:object="${findMobileProduct}" method="post">
+        <label>Marca:</label>
+        <input type="text" th:field="*{companyName}" />
+        <br/>
+        <label>Modelo:</label>
+        <input type="text" th:field="*{modelName}" />
+        <br/>
+        <label>Peso do Smarhhone em g:</label>
+        <input type="text" th:field="*{mobileWeight}" />
+        <br/>
+        <label>RAM:</label>
+        <input type="text" th:field="*{ram}" />
+        <br/>
+        <label>Câmera Frontal:</label>
+        <input type="text" th:field="*{frontCamera}" />
+        <br/>
+        <label>Câmera Traseira:</label>
+        <input type="text" th:field="*{backCamera}" />
+        <br/>
+        <label>Processador:</label>
+        <input type="text" th:field="*{processor}" />
+        <br/>
+        <label>Capacidade da Bateria:</label>
+        <input type="text" th:field="*{batteryCapacity}" />
+        <br/>
+        <label>Tamanho da Tela:</label>
+        <input type="text" th:field="*{screenSize}" />
+        <br/>
+        <label>Preço em Dolares:</label>
+        <input type="text" th:field="*{launchedPriceUSD}" />
+        <br/>
+        <label>Ano de Lançamento:</label>
+        <input type="text" th:field="*{launchedYear}" />
+        <br/>
+        <button type="submit">Enviar</button>
+    </form>
+    <a th:href="@{/}">Back to List</a>
+</body>
+</html>

@@ -4,39 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${pageTitle}">Estoque de Smartphones</title>
+    <style>
+        .div-table {
+            display: table;         
+            width: auto;         
+            background-color: #eee;         
+            border: 1px solid #666666;         
+            border-spacing: 5px; /* cellspacing:poor IE support for  this */
+        }
+        .div-table-row {
+            display: table-row;
+            width: auto;
+            clear: both;
+        }
+        .div-table-col {
+            float: left; /* fix for  buggy browsers */
+            display: table-column;         
+            width: 150px;         
+            background-color: #ccc;  
+        }
+    </style>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Peso do Smartphone</th>
-                <th>RAM</th>
-                <th>Câmera Frontal</th>
-                <th>Câmera Traseira</th>
-                <th>Processador</th>
-                <th>Capacidade da Bateria</th>
-                <th>Tamanho da Tela</th>
-                <th>Preço em Dolares</th>
-                <th>Ano de Lançamento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="smartphone : ${smartphones}">
-                <td class="cell" th:text="${smartphone.companyName}">companyName</td>
-                <td class="cell" th:text="${smartphone.modelName}">modelName</td>
-                <td class="cell" th:text="${smartphone.mobileWeight}">Milhas Por Litro</td>
-                <td class="cell" th:text="${smartphone.ram}">ram</td>
-                <td class="cell" th:text="${smartphone.frontCamera}">frontCamera</td>
-                <td class="cell" th:text="${smartphone.backCamera}">backCamera</td>
-                <td class="cell" th:text="${smartphone.processor}">processor</td>
-                <td class="cell" th:text="${smartphone.batteryCapacity}">batteryCapacity</td>
-                <td class="cell" th:text="${smartphone.screenSize}">screenSize</td>
-                <td class="cell" th:text="${smartphone.launchedPriceUSD}">screenSize</td>
-                <td class="cell" th:text="${smartphone.launchedYear}">launchedYear</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="div-table">
+        <div class="div-table-row">
+            <div class="div-table-col">ID</div>
+            <div class="div-table-col">Marca</div>
+            <div class="div-table-col">Modelo</div>
+            <div class="div-table-col">Peso do Smartphone</div>
+            <div class="div-table-col">RAM</div>
+            <div class="div-table-col">Câmera Frontal</div>
+            <div class="div-table-col">Câmera Traseira</div>
+            <div class="div-table-col">Processador</div>
+            <div class="div-table-col">Capacidade da Bateria</div>
+            <div class="div-table-col">Tamanho da Tela</div>
+            <div class="div-table-col">Preço em Dolares</div>
+            <div class="div-table-col">Ano de Lançamento</div>
+        </div>
+        <div class="div-table-row" th:each="smartphone : ${smartphones}" >
+            <div class="div-table-col" th:text="${smartphone.idMobileProduct}">id</div>
+            <div class="div-table-col" th:text="${smartphone.companyName}">companyName</div>
+            <div class="div-table-col" th:text="${smartphone.modelName}">modelName</div>
+            <div class="div-table-col" th:text="${smartphone.mobileWeight}">Milhas Por Litro</div>
+            <div class="div-table-col" th:text="${smartphone.ram}">ram</div>
+            <div class="div-table-col" th:text="${smartphone.frontCamera}">frontCamera</div>
+            <div class="div-table-col" th:text="${smartphone.backCamera}">backCamera</div>
+            <div class="div-table-col" th:text="${smartphone.processor}">processor</div>
+            <div class="div-table-col" th:text="${smartphone.batteryCapacity}">batteryCapacity</div>
+            <div class="div-table-col" th:text="${smartphone.screenSize}">screenSize</div>
+            <div class="div-table-col" th:text="${smartphone.launchedPriceUSD}">screenSize</div>
+            <div class="div-table-col" th:text="${smartphone.launchedYear}">launchedYear</div>
+            <div class="div-table-col"><a th:href="@{|update/${smartphone.idMobileProduct}|}">Editar</a></div>
+            <div class="div-table-col"><a th:href="@{|delete/${smartphone.idMobileProduct}|}">Deletar</a></div>
+        </div>
+    </div>
+    <a th:href="@{/register}">Adicionar Novo Smartphone</a>
 </body>
 </html>
