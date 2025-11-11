@@ -2,6 +2,7 @@ package com.mobile_store.mobile_store.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +49,11 @@ public class MobileProductController {
         model.addAttribute("newSmartphone", new MobileProduct());
         model.addAttribute("pageTitle","Registro de Smartphone");
         return "register";
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteSmartphone(@PathVariable Long id){
+        service.deleteMobileProduct(id);
+        return "success";
     }
     
 }

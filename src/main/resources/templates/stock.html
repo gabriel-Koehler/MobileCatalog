@@ -56,7 +56,7 @@
             <div class="div-table-col" th:text="${smartphone.launchedPriceUSD}">screenSize</div>
             <div class="div-table-col" th:text="${smartphone.launchedYear}">launchedYear</div>
             <div class="div-table-col"><a th:href="@{|update/${smartphone.idMobileProduct}|}">Editar</a></div>
-            <div class="div-table-col"><a th:href="@{|delete/${smartphone.idMobileProduct}|}">Deletar</a></div>
+            <div class="div-table-col"><a th:href="@{delete/{id}(id=${smartphone.idMobileProduct})}">Deletar</a></div>
         </div>
     </div>
     <a th:href="@{/register}">Adicionar Novo Smartphone</a>
