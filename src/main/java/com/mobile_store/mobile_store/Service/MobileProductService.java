@@ -66,6 +66,20 @@ public class MobileProductService {
             "180",
             "2022"
         ));
+        mobiles.add(new MobileProduct(
+            mobiles.size()+1L,
+            "Apple",
+            "iPad Pro 13-inch 2TB",
+            "708g",
+            "6GB",
+            "7MP 12MP + 10MP",
+            "A12Z Bionic",
+            "10",
+            "307mAh",
+            "13 inches",
+            "1,799",
+            "2020"
+        ));
     }
     public List<MobileProduct> findAll(){
         return mobiles;
