@@ -25,15 +25,16 @@ public class MobileProductController {
         model.addAttribute("pageTitle","Estoque");
         return "stock";
     }
-    @PostMapping("/update")
-    public String postUpdateSmartphone(MobileProduct updaMobileProduct) {
-        service.updateMobileProduct(updaMobileProduct);
+    @PostMapping("/update/{id}")
+    public String postUpdateSmartphone(@PathVariable Long id,MobileProduct updaMobileProduct) {
+        service.updateMobileProduct(id,updaMobileProduct);
         return "success";
     }
     
     @GetMapping("/update/{id}")
     public String getUpdateSmartphone(@PathVariable Long id, Model model) {
         model.addAttribute("findMobileProduct", service.findById(id));
+        model.addAttribute("idProduct", id);
         model.addAttribute("pageTitle","Editar Smartphone");
         return "update";
     }

@@ -77,9 +77,12 @@ public class MobileProductService {
     public void deleteMobileProduct(Long id){
         mobiles.removeIf((e)-> e.getIdMobileProduct().equals(id));
     }
-    public void updateMobileProduct(MobileProduct updateMobileProduct){
-        MobileProduct findMobileProduct =(MobileProduct) mobiles.stream().filter((e)-> e.getIdMobileProduct().equals(updateMobileProduct.getIdMobileProduct())).findAny().orElse(null);
-        mobiles.add(mobiles.indexOf(findMobileProduct),updateMobileProduct);
+    public void updateMobileProduct(Long id,MobileProduct updateMobileProduct){
+        System.out.println(updateMobileProduct);
+        MobileProduct findMobileProduct =this.findById(id);
+        System.out.println(findMobileProduct);
+        updateMobileProduct.setIdMobileProduct(id);
+        mobiles.set(mobiles.indexOf(findMobileProduct),updateMobileProduct);
     }
     public MobileProduct findById(Long id){
         return (MobileProduct) mobiles.stream().filter((e)->e.getIdMobileProduct().equals(id)).findAny().orElse(null) ;

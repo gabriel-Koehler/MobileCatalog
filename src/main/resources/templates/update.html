@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Editar Smartphone</h1>
-    <form th:action="@{|/update/${findMobileProduct.idMobileProduct}|}" th:object="${findMobileProduct}" method="post">
+    <form th:action="@{|/update/${idProduct}|}" th:object="${findMobileProduct}" method="post">
         <label>Marca:</label>
         <input type="text" th:field="*{companyName}" />
         <br/>
