@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Estoque de Smartphones</title>
+    <style>
+        .div-table {
+            display: table;         
+            width: auto;         
+            background-color: #eee;         
+            border: 1px solid #666666;         
+            border-spacing: 5px; /* cellspacing:poor IE support for  this */
+        }
+        .div-table-row {
+            display: table-row;
+            width: auto;
+            clear: both;
+        }
+        .div-table-col {
+            float: left; /* fix for  buggy browsers */
+            display: table-column;
+            /* width: min-content;          */
+            width: 135px;         
+            background-color: #ccc;  
+        }
+    </style>
+</head>
+<body>
+    <div class="div-table">
+        <div class="div-table-row">
+            <div class="div-table-col">ID</div>
+            <div class="div-table-col">Marca</div>
+            <div class="div-table-col">Modelo</div>
+            <div class="div-table-col">Peso do Smartphone</div>
+            <div class="div-table-col">RAM</div>
+            <div class="div-table-col">Câmera Frontal</div>
+            <div class="div-table-col">Câmera Traseira</div>
+            <div class="div-table-col">Processador</div>
+            <div class="div-table-col">Capacidade da Bateria</div>
+            <div class="div-table-col">Tamanho da Tela</div>
+            <div class="div-table-col">Preço em Dolares</div>
+            <div class="div-table-col">Ano de Lançamento</div>
+        </div>
+        <div class="div-table-row" th:each="smartphone : ${smartphones}" >
+            <div class="div-table-col" th:text="${smartphone.idMobileProduct}">id</div>
+            <div class="div-table-col" th:text="${smartphone.companyName}">companyName</div>
+            <div class="div-table-col" th:text="${smartphone.modelName}">modelName</div>
+            <div class="div-table-col" th:text="${smartphone.mobileWeight}">Milhas Por Litro</div>
+            <div class="div-table-col" th:text="${smartphone.ram}">ram</div>
+            <div class="div-table-col" th:text="${smartphone.frontCamera}">frontCamera</div>
+            <div class="div-table-col" th:text="${smartphone.backCamera}">backCamera</div>
+            <div class="div-table-col" th:text="${smartphone.processor}">processor</div>
+            <div class="div-table-col" th:text="${smartphone.batteryCapacity}">batteryCapacity</div>
+            <div class="div-table-col" th:text="${smartphone.screenSize}">screenSize</div>
+            <div class="div-table-col" th:text="${smartphone.launchedPriceUSD}">screenSize</div>
+            <div class="div-table-col" th:text="${smartphone.launchedYear}">launchedYear</div>
+            <div class="div-table-col"><a th:href="@{|update/${smartphone.idMobileProduct}|}">Editar</a></div>
+            <div class="div-table-col"><a th:href="@{delete/{id}(id=${smartphone.idMobileProduct})}">Deletar</a></div>
+        </div>
+    </div>
+    <button onsubmit=""></button>
+    <a th:href="@{/register}">Adicionar Novo Smartphone</a>
+</body>
+</html>

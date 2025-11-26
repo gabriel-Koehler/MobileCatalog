@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}">Register Smartphone</title>
+    <style>
+        form{
+            width: min-content;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Registrar Novo Smartphone</h1>
+<form th:action="@{|/register|}" th:object="${newSmartphone}" method="post">
+    <label>Marca:</label>
+    <input type="text" th:field="*{companyName}" />
+    
+    <label>Modelo:</label>
+    <input type="text" th:field="*{modelName}" />
+    
+    <label>Peso do Smarhhone em g:</label>
+    <input type="text" th:field="*{mobileWeight}" />
+    
+    <label>RAM:</label>
+    <input type="text" th:field="*{ram}" />
+    
+    <label>Câmera Frontal:</label>
+    <input type="text" th:field="*{frontCamera}" />
+    
+    <label>Câmera Traseira:</label>
+    <input type="text" th:field="*{backCamera}" />
+    
+    <label>Processador:</label>
+    <input type="text" th:field="*{processor}" />
+    
+    <label>Capacidade da Bateria:</label>
+    <input type="text" th:field="*{batteryCapacity}" />
+    
+    <label>Tamanho da Tela:</label>
+    <input type="text" th:field="*{screenSize}" />
+    <label>Preço em Dolares:</label>
+    <input type="text" th:field="*{launchedPriceUSD}" />
+    <label>Ano de Lançamento:</label>
+    <input type="text" th:field="*{launchedYear}" />
+    <button type="submit">Enviar</button>
+</form>
+<a th:href="@{/}">Voltar para o Estoque</a>
+</body>
+</html>
