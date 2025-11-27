@@ -7,99 +7,112 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mobile_store.mobile_store.Model.MobileProduct;
+import com.mobile_store.mobile_store.Repository.MobileProductRepository;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class MobileProductService {
-    List<MobileProduct> mobiles= new ArrayList<>();
-    public MobileProductService(){
-        mobiles.add(new MobileProduct(
-            mobiles.size()+1L,
-            "Apple",
-            "iPhone 16 128GB",
-            "174g",
-            "6GB",
-            "12MP",
-            "48MP",
-            "A17 Bionic",
-            "3,600mAh",
-            "6.1 inches",
-            "799,00",
-            "2024"));
-        mobiles.add(new MobileProduct(
-            mobiles.size()+1L,
-            "Xiaomi",
-            "Redmi Note 12",
-            "188g",
-            "4GB",
-            "8MP",
-            "50MP + 8MP + 2MP",
-            "Snapdragon 4 Gen 1",
-            "5000mAh",
-            "6.67 in",
-            "169",
-            "2023"));
-        mobiles.add(new MobileProduct(
-            mobiles.size()+1L,
-            "Samsung",
-            "Galaxy A04s",
-            "195g",
-            "4GB",
-            "5MP",
-            "50MP + 2MP + 2MP",
-            "Exynos 850",
-            "5000mAh",
-            "6.5 in",
-            "149",
-            "2022"
-        ));
-        mobiles.add(new MobileProduct(
-            mobiles.size()+1L,
-            "Infinix",
-            "Hot 20 5G",
-            "204g",
-            "4GB",
-            "8MP",
-            "50MP + 2MP",
-            "Dimensity 810",
-            "5000mAh",
-            "6.6 in",
-            "180",
-            "2022"
-        ));
-        mobiles.add(new MobileProduct(
-            mobiles.size()+1L,
-            "Apple",
-            "iPad Pro 13-inch 2TB",
-            "708g",
-            "6GB",
-            "7MP 12MP + 10MP",
-            "A12Z Bionic",
-            "10",
-            "307mAh",
-            "13 inches",
-            "1,799",
-            "2020"
-        ));
-    }
+    private MobileProductRepository repository;
+
+    // List<MobileProduct> mobiles= new ArrayList<>();
+    // public MobileProductService(){
+    //     mobiles.add(new MobileProduct(
+    //         mobiles.size()+1L,
+    //         "Apple",
+    //         "iPhone 16 128GB",
+    //         "174g",
+    //         "6GB",
+    //         "12MP",
+    //         "48MP",
+    //         "A17 Bionic",
+    //         "3,600mAh",
+    //         "6.1 inches",
+    //         "799,00",
+    //         "2024"));
+    //     mobiles.add(new MobileProduct(
+    //         mobiles.size()+1L,
+    //         "Xiaomi",
+    //         "Redmi Note 12",
+    //         "188g",
+    //         "4GB",
+    //         "8MP",
+    //         "50MP + 8MP + 2MP",
+    //         "Snapdragon 4 Gen 1",
+    //         "5000mAh",
+    //         "6.67 in",
+    //         "169",
+    //         "2023"));
+    //     mobiles.add(new MobileProduct(
+    //         mobiles.size()+1L,
+    //         "Samsung",
+    //         "Galaxy A04s",
+    //         "195g",
+    //         "4GB",
+    //         "5MP",
+    //         "50MP + 2MP + 2MP",
+    //         "Exynos 850",
+    //         "5000mAh",
+    //         "6.5 in",
+    //         "149",
+    //         "2022"
+    //     ));
+    //     mobiles.add(new MobileProduct(
+    //         mobiles.size()+1L,
+    //         "Infinix",
+    //         "Hot 20 5G",
+    //         "204g",
+    //         "4GB",
+    //         "8MP",
+    //         "50MP + 2MP",
+    //         "Dimensity 810",
+    //         "5000mAh",
+    //         "6.6 in",
+    //         "180",
+    //         "2022"
+    //     ));
+    //     mobiles.add(new MobileProduct(
+    //         mobiles.size()+1L,
+    //         "Apple",
+    //         "iPad Pro 13-inch 2TB",
+    //         "708g",
+    //         "6GB",
+    //         "7MP 12MP + 10MP",
+    //         "A12Z Bionic",
+    //         "10",
+    //         "307mAh",
+    //         "13 inches",
+    //         "1,799",
+    //         "2020"
+    //     ));
+    // }
     public List<MobileProduct> findAll(){
-        return mobiles;
+        return (List<MobileProduct>)repository.findAll();
+        // return mobiles;
     }
     public void addMobileProduct(MobileProduct newMobileProduct){
-        newMobileProduct.setIdMobileProduct(mobiles.size()+1L);
-        mobiles.add(newMobileProduct);
+        // newMobileProduct.setIdMobileProduct(mobiles.size()+1L);
+        repository.save(newMobileProduct);
+        // mobiles.add(newMobileProduct);
     }    
     public void deleteMobileProduct(Long id){
-        mobiles.removeIf((e)-> e.getIdMobileProduct().equals(id));
+        repository.deleteById(id);
+        // mobiles.removeIf((e)-> e.getIdMobileProduct().equals(id));
     }
     public void updateMobileProduct(Long id,MobileProduct updateMobileProduct){
         System.out.println(updateMobileProduct);
         MobileProduct findMobileProduct =this.findById(id);
         System.out.println(findMobileProduct);
         updateMobileProduct.setIdMobileProduct(id);
-        mobiles.set(mobiles.indexOf(findMobileProduct),updateMobileProduct);
+        repository.save(updateMobileProduct);
+        // mobiles.set(mobiles.indexOf(findMobileProduct),updateMobileProduct);
     }
     public MobileProduct findById(Long id){
-        return (MobileProduct) mobiles.stream().filter((e)->e.getIdMobileProduct().equals(id)).findAny().orElse(null) ;
+
+        return repository.findById(id).get();
+        // return (MobileProduct) mobiles.stream().filter((e)->e.getIdMobileProduct().equals(id)).findAny().orElse(null) ;
     }
 }
 
