@@ -20,8 +20,8 @@
         .div-table-col {
             float: left; /* fix for  buggy browsers */
             display: table-column;
-            /* width: min-content;          */
-            width: 135px;         
+            width: 130px;         
+            /* width: 135px;          */
             background-color: #ccc;  
         }
     </style>
@@ -59,7 +59,6 @@
             <div class="div-table-col"><a th:href="@{delete/{id}(id=${smartphone.idMobileProduct})}">Deletar</a></div>
         </div>
     </div>
-    <button onsubmit=""></button>
     <a th:href="@{/register}">Adicionar Novo Smartphone</a>
 </body>
 </html>
